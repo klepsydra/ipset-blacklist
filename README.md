@@ -6,9 +6,14 @@ A tiny Bash shell script which uses ipset and iptables to ban a large number of 
 The ipset command doesn't work under OpenVZ. It works fine on dedicated and fully virtualized servers like KVM though.
 
 ## What's new
-- 11/11/2015: Merged all suggestions from https://github.com/drzraf
-- 10/24/2015: Outsourced the entire configuration in it's own configuration file. Makes updating the shell script way easier!
-- 10/22/2015: Changed the documentation, the script should be put in /usr/local/sbin not /usr/local/bin
+- 2015-11-11: Merged all suggestions from https://github.com/drzraf
+- 2015-10-24: Outsourced the entire configuration in it's own configuration file. Makes updating the shell script way easier!
+- 2015-10-22: Changed the documentation, the script should be put in /usr/local/sbin not /usr/local/bin
+- 2016-04-07: Combined raw outputs from all blacklists kept in /tmp/ip.update-blacklist.sh.ALL.txt 
+-             Also improved vastly improved verbosity (date; VERBOSE=yestime /etc/cron.daily/ip.update-blacklist ) 2>&1 |tee -a /tmp/ip.update-blacklist.log
+-             Generally keeping self-cleaning logs & temp files for post-mortem inspection in /tmp: 
+-             Segregated IPv4 and IPv6 processed lists: ip-blacklist.list, ip6-blacklist.list
+
 
 ## Quick start for Debian/Ubuntu based installations
 1. wget -O /usr/local/sbin/update-blacklist.sh https://raw.githubusercontent.com/trick77/ipset-blacklist/master/update-blacklist.sh
